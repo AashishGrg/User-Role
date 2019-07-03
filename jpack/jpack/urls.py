@@ -13,9 +13,15 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.urls import path,include
 from django.contrib import admin
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
+    path('admin/', admin.site.urls),
+    path('authentication/',include('authentication.urls',namespace='authentication'))
+
 ]
+
+admin.site.site_header = "JPACK User Admin"
+admin.site.site_title = "JPACK User Admin Portal"
+admin.site.index_title = "JPACK Site administration"
